@@ -1,5 +1,7 @@
 ---
 name: "lhg_debug"
+slug: "lhg-debug"
+displayName: "系统化调试"
 description: "系统化调试：复现→定位→修复→验证四阶段，按 Zeller 科学调试法与 Agans 九规则执行，输出最小复现、实验证实的根因、回归测试与缺陷知识库条目。"
 ---
 
