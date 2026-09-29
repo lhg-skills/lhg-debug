@@ -66,12 +66,10 @@ MIT — 详见 [LICENSE](LICENSE)。
 
 ---
 
-## 作者
 
-![刘洪光](docs/avatar.png)
+## 出品：刘洪光
 
-**刘洪光** · 安徽合肥
+本 skill 由真人出镜 IP「刘洪光」（安徽合肥）出品，归属 [lhg-skills](https://github.com/lhg-skills)。
 
-微信联系：
-
-![微信二维码](docs/wechat-qr.png)
+- GitHub 主页：https://github.com/lhg-skills —— 全部 skill 开源在此，欢迎 star
+- 微信交流：![刘洪光微信](docs/wechat-qr.png)
