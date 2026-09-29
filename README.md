@@ -83,6 +83,19 @@ MIT — 详见 [LICENSE](LICENSE)。
 
 ---
 
+## FAQ
+
+**Q：lhg-debug 有什么用？**
+适合的场景：bug 修不动的时候要一套科学流程：Zeller 科学调试法加 Agans 九规则，复现→定位→修复→验证。
+
+**Q：免费吗？怎么安装？**
+开源免费（MIT，可商用、保留署名）。安装：`npx skills add lhg-skills/lhg-debug`，或 clone 仓库把 `SKILL.md` 放进对应平台的 skills 目录。
+
+**Q：支持哪些 AI 平台？**
+平台中立纯 Markdown 流程描述，Claude Code、Codex、豆包智能体、Workbuddy、扣子、Trae 等支持 Markdown 指令的环境都可用。更多 skill 见 [lhg-skills 组织主页](https://github.com/lhg-skills)。
+
+---
+
 ## lhg-skills 矩阵
 
 刘洪光出品的中文 Agent Skills，全开源：
