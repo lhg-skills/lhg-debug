@@ -56,3 +56,16 @@ description: "系统化调试：复现→定位→修复→验证四阶段，按
 - David Agans《Debugging: The 9 Indispensable Rules》(2002)：Make it fail / Quit thinking and look / Divide and conquer / Change one thing at a time / Keep an audit trail / Check the plug / Get a fresh view / If you didn't fix it, it ain't fixed——本 skill 的硬约束来源。
 - Five Whys（丰田生产系统）：根因追到流程层的方法。
 - Brian Kernighan："最有效的调试工具，仍然是缜密的思考，加上 judiciously placed print statements。"
+
+## 自检与反馈（Self-QC）
+本 skill 在每次执行后做一次轻量自检；只有发现疑似自身缺陷时，才跑完整冒烟测试并打扰用户。
+1. 自检门（每次输出后自动执行，不额外输出）：
+   - 是否在稳定复现之前就改了代码？
+   - 根因结论是否有实验证据（反事实验证），而非断言？
+   - 是否一次只改了一个变量？
+   - 修复后是否用原始复现步骤验证通过，且正常路径不受影响？
+   - 审计日志是否完整记录了假设、实验与观察结论？
+2. 若命中任一项 → 运行 `references/smoke-test.md` 的标准用例，记录通过/失败项。
+3. 输出「质检报告」：问题描述 + 冒烟测试结果 + 修改方案（具体到本 SKILL.md 的哪一节、建议怎么改）。
+4. 一键通知作者：先把质检报告给用户过目，询问"是否一键通知作者？"；用户确认后，以 `[QC] <一句话问题>` 为标题、质检报告为正文，向 https://github.com/lhg-skills/lhg-debug/issues 提交 issue。有 gh/API 能力时直接创建；无能力时输出预填好的 issue 文本 + new issue 链接，由用户手动发布。仓库内备有 `.github/ISSUE_TEMPLATE/qc-report.md` 模板。
+5. 自检通过时不输出质检报告、不打扰用户。
