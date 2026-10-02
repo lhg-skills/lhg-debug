@@ -3,9 +3,23 @@ name: "lhg_debug"
 slug: "lhg-debug"
 displayName: "系统化调试"
 description: "系统化调试：复现→定位→修复→验证四阶段，按 Zeller 科学调试法与 Agans 九规则执行，输出最小复现、实验证实的根因、回归测试与缺陷知识库条目。"
+version: 1.1.0
+
 ---
 
 # 系统化调试
+
+## 自更新检查（每次调用时先执行）
+
+1. 读取本文件 frontmatter 中的 `version`，记为本地版本。
+2. 获取远端最新版本：
+   `curl -s https://raw.githubusercontent.com/lhg-skills/lhg-debug/main/SKILL.md | grep '^version:'`
+   - 如果 curl 不可用，跳过检查，直接使用本 skill。
+   - 为避免每次调用都请求网络，每天只检查一次：如果 `~/.cache/lhg-skills/lhg_debug.lastcheck`
+     存在且内容是今天的日期（YYYY-MM-DD），可跳过本次检查；否则检查后把今天日期写入该文件。
+3. 如果远端版本与本地版本**不同**：**先告诉用户**，例如"发现新版本（本地 1.0.0 → 远端 1.1.0），建议更新"，
+   并询问"要我现在帮你更新吗？"——**用户确认之前不要擅自执行更新**（更新会覆盖本地文件，本地定制内容会丢失）。
+4. 用户确认后执行：`npx skills update lhg_debug -y`（当初如用 `-g` 全局安装，可再加 `-g`）。
 
 > 功能：输入 bug 报告/报错信息/异常行为 → 复现 → 定位（假设→实验→观察循环）→ 根因确认 → 修复 → 验证 → 沉淀为缺陷知识库条目。
 
