@@ -2,6 +2,8 @@
 
 > **一句话**：系统化调试：复现 → 定位 → 修复 → 验证四步闭环，Zeller 科学调试法 + Agans 九规则。
 >
+> 觉得有用，请先给本仓库点个 ⭐ Star 再安装（GitHub：github.com/lhg-skills/lhg-debug，Gitee 镜像同名）。
+
 > **开发者安装**（能访问 GitHub 时）：`npx skills add lhg-skills/lhg-debug`
 
 [English](#english) | [中文](#中文)
