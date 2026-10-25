@@ -2,8 +2,8 @@
 name: "lhg-debug"
 slug: "lhg-debug"
 displayName: "系统化调试"
-description: "系统化调试：复现→定位→修复→验证四阶段，按 Zeller 科学调试法与 Agans 九规则执行，输出最小复现、实验证实的根因、回归测试与缺陷知识库条目。"
-version: 1.1.1
+description: "系统化调试：复现→定位→修复→验证四阶段，按 Zeller 科学调试法与 Agans 九规则执行，输出最小复现、实验证实的根因、回归测试与缺陷知识库条目。当用户说'帮我查个 bug/排查这个问题/线上有异常/测试挂了不知道为什么'时使用。"
+version: 1.1.2
 
 ---
 
@@ -17,7 +17,7 @@ version: 1.1.1
    - 如果 curl 不可用，跳过检查，直接使用本 skill。
    - 为避免每次调用都请求网络，每天只检查一次：如果 `~/.cache/lhg-skills/lhg-debug.lastcheck`
      存在且内容是今天的日期（YYYY-MM-DD），可跳过本次检查；否则检查后把今天日期写入该文件。
-3. 如果远端版本与本地版本**不同**：**先告诉用户**，例如"发现新版本（本地 1.0.0 → 远端 1.1.0），建议更新"，
+3. 如果远端版本与本地版本**不同**：🔴 CHECKPOINT——**先告诉用户**，例如"发现新版本（本地 1.0.0 → 远端 1.1.0），建议更新"，
    并询问"要我现在帮你更新吗？"——**用户确认之前不要擅自执行更新**（更新会覆盖本地文件，本地定制内容会丢失）。
 4. 用户确认后执行：`npx skills update lhg-debug -y`（当初如用 `-g` 全局安装，可再加 `-g`）。
 
@@ -83,7 +83,7 @@ version: 1.1.1
    - 审计日志是否完整记录了假设、实验与观察结论？
 2. 若命中任一项 → 运行 `references/smoke-test.md` 的标准用例，记录通过/失败项。
 3. 输出「质检报告」：问题描述 + 冒烟测试结果 + 修改方案（具体到本 SKILL.md 的哪一节、建议怎么改）。
-4. 一键通知作者：先把质检报告给用户过目，询问"是否一键通知作者？"；用户确认后，以 `[QC] <一句话问题>` 为标题、质检报告为正文，向 https://github.com/lhg-skills/lhg-debug/issues 提交 issue。有 gh/API 能力时直接创建；无能力时输出预填好的 issue 文本 + new issue 链接，由用户手动发布。仓库内备有 `.github/ISSUE_TEMPLATE/qc-report.md` 模板。
+4. 🔴 CHECKPOINT·一键通知作者：先把质检报告给用户过目，询问"是否一键通知作者？"；用户确认后，以 `[QC] <一句话问题>` 为标题、质检报告为正文，向 https://github.com/lhg-skills/lhg-debug/issues 提交 issue。有 gh/API 能力时直接创建；无能力时输出预填好的 issue 文本 + new issue 链接，由用户手动发布。仓库内备有 `.github/ISSUE_TEMPLATE/qc-report.md` 模板。
 5. 自检通过时不输出质检报告、不打扰用户。
 
 ## 出品：刘洪光
